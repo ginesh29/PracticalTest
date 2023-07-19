@@ -1,0 +1,48 @@
+﻿@using PracticalTest.Entities;
+@model IEnumerable<Friend>
+
+@{
+    ViewData["Title"] = "Friend List";
+}
+
+<h1>Friend List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Friend Id
+            </th>
+            <th>
+                Friend Name
+            </th>
+            <th>
+                Place
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FriendId
+                </td>
+                <td>
+                    @item.FriendName
+                </td>
+                <td>
+                    @item.Place
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { guid=item.Guid}) |
+                    @Html.ActionLink("Delete", "Delete", new {  guid=item.Guid})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
